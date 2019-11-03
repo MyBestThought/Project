@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+
+    <!--<bean id="stu" class="com.yht.example2.common.StudentMessage"></bean>-->
+
+    <!--常见的通知类型：
+    前置通知：在方法执行之前执行
+    后置通知：在方法执行之后执行
+    异常通知：在方法执行发生异常的时候执行
+    最终通知：无论切入点方法是否正常执行它都会在最后执行
+    环绕通知：是Spring框架为我们提供的一种可以在代码中手动控制增强方法何时执行的方式
+        问题：当配置了环绕通知，切入点的方法没有执行，而通知方法执行了
+        分析：通过对比动态代理中d的环绕通知代码，发现动态代理的环绕通知有名且的切入点调用，而自己的代码中没有
+
+
+    配置切入点表达式：id属性用于指定表达式的唯一标识，expression用于指定表达式的内容。
+    此标签写在aop:aspect标签内部只能当当前切面使用，当写在外面的时候，所有的都可以使用。
+    -->
+
+
+
+
+   <!--<bean id="logMes" class="com.yht.example2.utils.LoggerMessage"></bean>-->
+    <!--<aop:config>-->
+        <!--<aop:aspect id="student" ref="logMes">-->
+            <!--<aop:before method="beforeMethod" pointcut="execution(* *..*.*(..))"></aop:before>-->
+            <!--<aop:after method="afterMethod" pointcut="execution(* *..*.*(..))"></aop:after>-->
+            <!--<aop:after-returning method="finalMethod" pointcut="execution(* *..*.*(..))"></aop:after-returning>-->
+            <!--<aop:after-throwing method="exceptionMethod" pointcut="execution(* *..*.*(..))"></aop:after-throwing>-->
+        <!--</aop:aspect>-->
+    <!--</aop:config>-->
+
+    <!--<bean id="logMes" class="com.yht.example2.utils.LoggerMessage"></bean>-->
+    <!--<aop:config>-->
+        <!--<aop:pointcut id="testpo" expression="execution(* *..*.*(..))"></aop:pointcut>-->
+        <!--<aop:aspect id="student" ref="logMes">-->
+            <!--<aop:before method="beforeMethod" pointcut-ref="testpo" ></aop:before>-->
+            <!--<aop:after method="afterMethod" pointcut-ref="testpo" ></aop:after>-->
+            <!--<aop:after-returning method="finalMethod" pointcut-ref="testpo" ></aop:after-returning>-->
+            <!--<aop:after-throwing method="exceptionMethod" pointcut-ref="testpo" ></aop:after-throwing>-->
+        <!--</aop:aspect>-->
+    <!--</aop:config>-->
+    <!--<bean id="logMes" class="com.yht.example2.utils.LoggerMessage"></bean>-->
+    <!--<aop:config>-->
+        <!--<aop:pointcut id="testpo" expression="execution(* *..*.*(..))"></aop:pointcut>-->
+        <!--<aop:aspect id="student" ref="logMes">-->
+            <!--<aop:around  method="arroundMethod" pointcut-ref="testpo" ></aop:around>-->
+        <!--</aop:aspect>-->
+    <!--</aop:config>-->
+
+
+    <context:component-scan base-package="com.yht.example3"></context:component-scan>
+    <bean id="teacher" class="com.yht.example3.Teacher"></bean>
+    <aop:aspectj-autoproxy></aop:aspectj-autoproxy>
+</beans>
