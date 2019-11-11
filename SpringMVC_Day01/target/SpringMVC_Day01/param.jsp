@@ -17,7 +17,7 @@
     姓名：<input type="text" name="name"><br>
     年龄：<input type="text" name="age"><br>
     工作：<input type="text" name="job"><br>
-    <h2>学生信息</h2>
+    <h2>List</h2>
     姓名：<input type="text" name="list[0].name"><br>
     分数：<input type="text" name="list[0].score"><br>
     姓名：<input type="text" name="list[1].name"><br>

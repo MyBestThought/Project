@@ -1,15 +1,14 @@
 package com.yht.example1.commons;
 
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class Teacher implements Serializable {
     private String name;
     private int age;
     private String job;
+    private Date birthday;
+
 
     private List<Student> list = new ArrayList<>();
 
@@ -18,11 +17,6 @@ public class Teacher implements Serializable {
     public Teacher() {
     }
 
-    public Teacher(String name, int age, String job) {
-        this.name = name;
-        this.age = age;
-        this.job = job;
-    }
 
     public String getName() {
         return name;
@@ -64,14 +58,22 @@ public class Teacher implements Serializable {
         this.map = map;
     }
 
+
+    public Date getBirthday() {
+        return birthday;
+    }
+
+    public void setBirthday(Date birthday) {
+        this.birthday = birthday;
+    }
+
     @Override
     public String toString() {
         return "Teacher{" +
                 "name='" + name + '\'' +
                 ", age=" + age +
                 ", job='" + job + '\'' +
-                ", list=" + list +
-                ", map=" + map +
+                ", birthday=" + birthday +
                 '}';
     }
 }

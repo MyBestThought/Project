@@ -25,5 +25,10 @@ public class ParamTest {
         return "success";
     }
 
+    @RequestMapping("/testConverter")
+    public String testConverter(Teacher teacher){
+        System.out.println(teacher);
+        return "success";
+    }
 
 }
