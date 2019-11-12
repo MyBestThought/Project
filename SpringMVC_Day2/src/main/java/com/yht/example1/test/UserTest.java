@@ -6,6 +6,7 @@ import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -36,4 +37,19 @@ public class UserTest {
         return "success";
     }
 
+    @RequestMapping("/testModelAndView")
+    public ModelAndView testModelAndView(){
+        ModelAndView mv = new ModelAndView();
+        User user = new User("tom", "123", 12);
+        mv.addObject("user", user);
+        mv.setViewName("success");
+        return mv;
+    }
+
+
+    @RequestMapping("/testForwardOrRedirect")
+    public String testForwardOrRedirect(){
+//       return "forward:/WEB-INF/pages/success";
+        return "redirect:/index.jsp";
+    }
 }

@@ -13,6 +13,6 @@
 <body>
 <a href="/user/testString">返回字符串</a><br>
 <a href="/user/testVoid">返回void</a><br>
-
+<a href="/user/testModelAndView">testModelAndView</a><br>
 </body>
 </html>
