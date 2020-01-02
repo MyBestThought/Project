@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="com.yht.dao.IStudentDao">
+    <select id="findList" parameterType="Map" resultType="com.yht.entity.Student">
+        select * from Student where 1=1
+        <if test="username !=null">
+            and username like #{username}
+        </if>
+        <if test="clazzId !=null">
+            and clazzId = #{clazzId}
+        </if>
+        limit #{offset},#{pageSize}
+    </select>
+
+
+    <select id="findByStudentName" parameterType="String" resultType="com.yht.entity.Student">
+      select * from student where username = #{username}
+   </select>
+    <select id="findAll" parameterType="Map" resultType="com.yht.entity.Student">
+      select * from student
+   </select>
+
+    <select id="getTotal" resultType="Integer" parameterType="Map">
+        select count(id) from Student where 1=1
+        <if test="username !=null">
+            and username like #{username}
+        </if>
+        <if test="gradeId !=null">
+            and clazzId = #{clazzId}
+        </if>
+    </select>
+
+    <insert id="addStudent" parameterType="com.yht.entity.Student">
+        insert into student(sn, clazzId, username, password, sex, photo, remark)
+
+        values(#{sn}, #{clazzId}, #{username}, #{password}, #{sex}, #{photo}, #{remark})
+    </insert>
+
+    <update id="updateStudent" parameterType="com.yht.entity.Student">
+        update Student set username = #{username},clazzId = #{clazzId},password=#{password},sex=#{sex},photo=#{photo},remark = #{remark} where id = #{id}
+    </update>
+
+    <delete id="deleteStudent" parameterType="String">
+        delete from student where id in (${value})
+    </delete>
+</mapper>

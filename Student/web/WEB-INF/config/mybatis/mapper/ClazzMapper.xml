@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+
+<mapper namespace="com.yht.dao.IClazzDao">
+    <select id="findList" parameterType="Map" resultType="com.yht.entity.Clazz">
+        select * from clazz where 1=1
+        <if test="name !=null">
+             and name like #{name}
+        </if>
+        <if test="gradeId !=null">
+             and gradeId = #{gradeId}
+        </if>
+         limit #{offset},#{pageSize}
+    </select>
+
+    <select id="findAll" resultType="com.yht.entity.Clazz">
+        select * from clazz
+    </select>
+
+    <select id="getTotal" resultType="Integer" parameterType="Map">
+        select count(id) from clazz where 1=1
+        <if test="name != null">
+            and name like #{name}
+        </if>
+        <if test="gradeId != null">
+            and gradeId = #{gradeId}
+        </if>
+    </select>
+
+    <insert id="addClazz" parameterType="com.yht.entity.Grade">
+        insert into clazz(gradeId, name, remark) values(#{gradeId}, #{name},#{remark})
+    </insert>
+
+    <update id="updateClazz" parameterType="com.yht.entity.Clazz">
+        update clazz set gradeId = #{gradeId}, name = #{name}, remark = #{remark} where id = #{id}
+    </update>
+
+    <delete id="deleteClazz" parameterType="String">
+        delete from clazz where id in (${value})
+    </delete>
+</mapper>
