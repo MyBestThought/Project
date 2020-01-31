@@ -1,0 +1,55 @@
+为了版本的统一，加入parent
+<!-- 指定Spring Boot的版本 2.0.4.RELEASE -->
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>2.0.4.RELEASE</version>
+    </parent>
+
+
+SpringBoot热部署：修改完源代码，让IDEA自动加载，不用重启
+注意：热部署失败的原因可能是因为IDEA不支持自动编译，需要设置
+
+起步依赖原理分析：进行版本控制
+
+yml和properties都可以去修改默认值
+
+yml文件格式：name:para，各种编程语言相通
+后缀可以为.yml或者/yaml
+加载顺序：.yml   .yaml   .properties     覆盖
+以空格表示层级关系
+
+#普通数据的配置，空格分隔
+name: zs
+#对象的配置
+server:
+  port: 8081
+
+#行内对象配置
+person: {name: zs, age: 18}
+
+#集合配置、数组配置（普通字符串）
+city:
+  - beijing
+  - tianji
+
+city: [beijing, xian]
+
+#集合配置、数组配置（对象数据）
+student:
+  - name: zs
+    age: 18
+
+  - name: ls
+    age: 20
+
+student: [{name: zs, age: 18}, {name: ls, age: 20}]
+
+#Map配置
+map:
+  key1: value
+  key2: value
+
+配置类与配置文件的属性映射方式
+1，使用@Value映射
+2，使用@ConfigurationProperties映射
